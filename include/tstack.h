@@ -11,7 +11,7 @@ public:
   TStack() : z(0) {
     ptr = new T[size];
   }
-  void pushup(const T& c) {
+  void PushUp(const T& c) {
     if (size - 1 >= z) {
       ptr[z++] = c;
     }
@@ -19,7 +19,7 @@ public:
       throw std::string("fall!");
     }
   }
-  T popback() {
+  T PopBack() {
     if (z > 0) {
       return ptr[--z];
     }
