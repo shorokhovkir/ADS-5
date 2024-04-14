@@ -18,32 +18,26 @@ std::string infx2pstfx(std::string inf) {
         if (flag) {
           line = line + " " + k;
           flag = false;
-        }
-        else {
+        } else {
           line = line + k;
         }
-      }
-      else {
+      } else {
         if (k == '(') {
           stack.PushUp(k);
-        }
-        else {
+        } else {
           flag = true;
           if (stack.IfZero()) {
             stack.PushUp(k);
-          }
-          else {
+          } else {
             if (k == ')') {
               while (stack.ElemUp() != '(') {
                 line = line + " " + stack.PopBack();
               }
               stack.PopBack();
-            }
-            else {
+            } else {
               if (prio(k) > prio(stack.ElemUp())) {
                 stack.PushUp(k);
-              }
-              else {
+              } else {
                 while ((!stack.IfZero()) &&
                   (prio(k) <= prio(stack.ElemUp()))) {
                   line = line + " " + stack.PopBack();
@@ -74,22 +68,19 @@ int eval(std::string pref) {
       if (!flag) {
         if (('0' <= s) && (s <= '9')) {
           line += s;
-        }
-        else {
+        } else {
           if (line == "") {
             int i = stack1.PopBack();
             int j = stack1.PopBack();
             int k = score(j, i, s);
             stack1.PushUp(k);
             flag = true;
-          }
-          else {
+          } else {
             stack1.PushUp(stoi(line));
             line = "";
           }
         }
-      }
-      else {
+      } else {
         flag = false;
       }
     }
@@ -122,7 +113,7 @@ int prio(char symbol) {
   return num;
 }
 int score(int x, int y, char symbol) {
-  switch(symbol) {
+  switch (symbol) {
   case '+':
     return x + y;
   case '-':
