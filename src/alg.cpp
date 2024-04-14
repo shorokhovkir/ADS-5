@@ -76,7 +76,7 @@ int eval(std::string pref) {
           line += s;
         }
         else {
-          if (line = "") {
+          if (line == "") {
             int i = stack1.PopBack();
             int j = stack1.PopBack();
             int k = score(j, i, s);
